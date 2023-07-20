@@ -1,24 +1,33 @@
-## 快速上手
+## 使用方法
 
-### 快速预览
+考虑卡片样式多样性，目前只支持拷贝组件路径到项目中直接使用
 
-使用`浏览器`或者`快应用调试器`扫码快速预览组件库效果：
-
-<div style="text-align: center;margin: 40px;"><img src="./assets/qrcode.png" alt="barcode" style="width:300px" /></div>
-
-### 使用组件库
-
-使用下面两种方式均可安装组件库到项目依赖中。
+组件库目录
 
 ```sh
-npm install widgetui --save  # 使用npm
-yarn add widgetui # 使用yarn
+src/components/
 ```
 
 组件库使用了 less 来开发，所以你还需要安装对应依赖。
 
 ```shell script
 npm install less less-loader --save-dev
+```
+
+## 特别说明
+
+本组件库的核心组件在：button 按钮组件、error-page 缺省页组件、skeleton 组件、title 标题组件。
+
+若有需求，需要适配桌面环境，可使用：container 容器组件。
+
+icon 组件为辅助组件，不需要可在组件中使用图片代替即可。
+
+## 开发上手
+
+```shell script
+npm install # 安装依赖
+npm run dev # 启动文档开发
+npm run start # 开启sample编译及调试
 ```
 
 ### 温馨提示
