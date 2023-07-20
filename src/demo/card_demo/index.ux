@@ -1,0 +1,176 @@
+<import
+  name="widget-container"
+  src="../../components/container/index.ux"
+></import>
+<import name="widget-title" src="../../components/title/index.ux"></import>
+<import
+  name="widget-error-page"
+  src="../../components/error-page/index.ux"
+></import>
+<import name="widget-button" src="../../components/button/index.ux"></import>
+<import name="card-skeleton" src="../components/skeleton/index.ux"></import>
+<import name="card-title" src="../components/title/index.ux"></import>
+<import
+  name="no-network"
+  src="../components/error/no_network/index.ux"
+></import>
+
+<template>
+  <widget-container is-dark="{{ isDark }}">
+    <div if="{{ hasNetwork }}" class="space-between-wrapper">
+      <block if="{{ !loading }}">
+        <card-title is-dark="{{ isDark }}"></card-title>
+        <div class="card-content-wrapper">
+          <div class="content-list">
+            <div
+              class="content-list-column {{ $idx === 1 ? 'group-nomargin' : 'group-margin'}}"
+              for="{{ listData }}"
+            >
+              <div>
+                <image
+                  src="{{ $item.logo }}"
+                  width="42px"
+                  height="42px"
+                ></image>
+                <div class="content-list-column-text">
+                  <text class="content-list-column-text-title">{{
+                    $item.title
+                  }}</text>
+                  <text class="content-list-column-text-desc">{{
+                    $item.desc
+                  }}</text>
+                </div>
+              </div>
+
+              <div class="content-list-column-btn">
+                <widget-button width="52" @click="click">安装</widget-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </block>
+      <card-skeleton else></card-skeleton>
+    </div>
+
+    <no-network else is-dark="{{ isDark }}">
+      <card-title has-right="{{ false }}" is-dark="{{ isDark }}"></card-title>
+    </no-network>
+  </widget-container>
+</template>
+
+<script>
+/**
+ * @file 4x2空白模板
+ */
+import { checkNetwork } from './common/utils'
+import configuration from '@system.configuration'
+
+export default {
+  data() {
+    return {
+      isDark: false,
+      hasNetwork: true,
+      loading: true,
+      listData: [
+        {
+          logo: 'http://cdo-test-store.s3v2-qos.storage.wanyol.com/openplat/photo/202301/03/9e9fa034e93161b7f16f4abb2e95e836.png',
+          title: '网易云音乐',
+          desc: '专注于发现与分享的音乐',
+        },
+        {
+          logo: 'http://cdo-test-store.s3v2-qos.storage.wanyol.com/openplat/photo/202301/03/9e9fa034e93161b7f16f4abb2e95e836.png',
+          title: '网易云音乐',
+          desc: '专注于发现与分享的音乐',
+        },
+      ],
+    }
+  },
+
+  onShow() {
+    this.updateCard()
+  },
+
+  async updateCard() {
+    this.isDark = configuration.getThemeMode() === 1
+    try {
+      this.hasNetwork = await checkNetwork()
+      if (this.hasNetwork) {
+        this.hasNetwork = true
+        this.loading = true
+        setTimeout(() => {
+          this.loading = false
+        }, 1000)
+
+        // 可做数据处理获展示错误状态或空状态
+      } else {
+        //this.hasNetwork = !!data
+      }
+    } catch (error) {
+      console.log(JSON.stringify(error), 111)
+    }
+  },
+
+  // 获取远程数据
+  async getRemoteData() {},
+
+  // 获取本地缓存数据
+  async getStorageDate() {},
+}
+</script>
+
+<style lang="less">
+.space-between-wrapper {
+  flex-direction: column;
+  width: 100%;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  background-image: url('./images/logo.png');
+}
+
+.card-content-wrapper {
+  width: 100%;
+
+  .content-list {
+    width: 100%;
+    padding-top: 12px;
+    flex-direction: column;
+    .content-list-column {
+      flex-direction: row;
+      justify-content: space-between;
+
+      .content-list-column-text {
+        margin: 0 8px;
+        width: 186px;
+        flex-direction: column;
+        .content-list-column-text-title {
+          font-size: 14px;
+          font-weight: 550;
+          line-height: 23px;
+          color: rgba(0, 0, 0, 0.85);
+        }
+
+        .content-list-column-text-desc {
+          font-size: 12px;
+          line-height: 12px;
+          color: rgba(0, 0, 0, 0.55);
+        }
+      }
+
+      .content-list-column-btn {
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}
+
+.group-margin {
+  margin-bottom: 14px;
+}
+.group-nomargin {
+  margin-bottom: 0;
+}
+</style>

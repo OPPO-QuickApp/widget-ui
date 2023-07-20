@@ -1,0 +1,99 @@
+<import name="widget-title" src="../../components/title/index.ux"></import>
+
+<template>
+  <div class="page">
+    <div class="item-container">
+      <div class="small-wrapper container">
+        <widget-title title="标题" is-dark="{{ isDark }}">
+          <div class="logo" enablenightmode="false"></div>
+        </widget-title>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="medium-wrapper container">
+        <widget-title
+          title="标题"
+          right-text="右侧icon是组件"
+          is-dark="{{ isDark }}"
+          right-icon="refresh"
+          @right-click="refreshClick"
+        >
+          <div class="logo" enablenightmode="false"></div>
+        </widget-title>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="medium-wrapper container">
+        <widget-title
+          title="标题"
+          right-text="右侧icon是组件"
+          right-icon="forward-arrow"
+          is-dark="{{ isDark }}"
+          @right-click="moreClick"
+        >
+          <div class="logo" enablenightmode="false"></div>
+        </widget-title>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="large-wrapper container">
+        <widget-title
+          title="标题"
+          right-text="右侧icon是图片"
+          has-right-image="{{ true }}"
+          is-dark="{{ isDark }}"
+        >
+          <div class="logo" enablenightmode="false"></div>
+          <div
+            slot="right-image"
+            class="right-image"
+            enablenightmode="false"
+          ></div>
+        </widget-title>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+/**
+ * @file 标题组件示例
+ */
+
+export default {
+  data() {
+    return {
+      isDark: false,
+    }
+  },
+  refreshClick() {
+    console.log('点击刷新!')
+  },
+  moreClick() {
+    console.log('点击更多!')
+  },
+}
+</script>
+
+<style lang="less">
+@import '../../common/style/common.css';
+
+.page {
+  flex-direction: column;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  background-image: url('../../common/images/icon.png');
+}
+
+.right-image {
+  width: 100%;
+  height: 100%;
+  background-image: url('../../common/images/light-more.png');
+}
+</style>

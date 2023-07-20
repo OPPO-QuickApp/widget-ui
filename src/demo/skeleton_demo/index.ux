@@ -1,0 +1,36 @@
+<import
+  name="widget-container"
+  src="../../components/container/index.ux"
+></import>
+<import name="skeleton" src="../components/skeleton/index.ux"></import>
+
+<template>
+  <widget-container is-dark="{{ isDark }}">
+    <div class="space-between-wrapper">
+      <skeleton></skeleton>
+    </div>
+  </widget-container>
+</template>
+
+<script>
+import configuration from '@system.configuration'
+
+export default {
+  data() {
+    return {
+      isDark: false,
+    }
+  },
+
+  onShow() {
+    this.isDark = configuration.getThemeMode() === 1
+  },
+}
+</script>
+
+<style lang="less">
+.space-between-wrapper {
+  flex-direction: column;
+  width: 100%;
+}
+</style>

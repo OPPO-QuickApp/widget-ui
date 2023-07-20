@@ -1,0 +1,51 @@
+<template>
+  <text class="font-icon" style="{{ textStyle }}" forcedark="false"
+    >{{ unescapeFontIconCode(iconMap[type]) }}
+  </text>
+</template>
+
+<script>
+import { icons } from './icon'
+
+export default {
+  props: {
+    type: {
+      default: 'empty',
+    },
+    size: {
+      default: 14,
+    },
+    color: {
+      default: '',
+    },
+  },
+  data() {
+    return {
+      iconMap: icons,
+    }
+  },
+  computed: {
+    textStyle() {
+      return {
+        fontSize: `${this.size}px`,
+        color: this.color,
+      }
+    },
+  },
+  unescapeFontIconCode(iconCode = '') {
+    let entity = '&#x' + iconCode
+    return unescape(entity.replace(/&#x/g, '%u').replace(/;/g, ''))
+  },
+}
+</script>
+<style lang="less">
+@font-face {
+  font-family: iconfont;
+  src: url('./icomoon.ttf');
+}
+
+.font-icon {
+  font-family: iconfont;
+  text-align: center;
+}
+</style>

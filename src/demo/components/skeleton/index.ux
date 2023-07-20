@@ -1,0 +1,106 @@
+<import
+  name="widget-skeleton"
+  src="../../../components/skeleton/index.ux"
+></import>
+
+<template>
+  <div class="card-skeleton">
+    <widget-skeleton
+      is-dark="{{ isDark }}"
+      width="60"
+      height="16"
+      border-radius="2"
+    >
+    </widget-skeleton>
+    <div class="card-skeleton-list">
+      <div
+        class="card-skeleton-list-column {{ ($idx+1) % 2 === 0 ? 'group-nomargin' : 'group-margin'}}"
+        for="2"
+      >
+        <div>
+          <widget-skeleton
+            is-dark="{{ isDark }}"
+            width="42"
+            height="42"
+            border-radius="9"
+          ></widget-skeleton>
+
+          <div class="card-skeleton-list-column-text">
+            <div style="margin-bottom: 6px">
+              <widget-skeleton
+                is-dark="{{ isDark }}"
+                width="130"
+                height="14"
+                border-radius="2"
+              ></widget-skeleton>
+            </div>
+
+            <widget-skeleton
+              is-dark="{{ isDark }}"
+              width="78"
+              height="12"
+              border-radius="2"
+            ></widget-skeleton>
+          </div>
+        </div>
+        <div class="card-skeleton-list-column-btn">
+          <widget-skeleton
+            is-dark="{{ isDark }}"
+            width="52"
+            height="28"
+            border-radius="14"
+          ></widget-skeleton>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import configuration from '@system.configuration'
+
+export default {
+  data() {
+    return {
+      isDark: false,
+    }
+  },
+
+  onShow() {
+    this.isDark = configuration.getThemeMode() === 1
+  },
+}
+</script>
+
+<style lang="less">
+.space-between-wrapper {
+  flex-direction: column;
+  width: 100%;
+}
+
+.group-margin {
+  margin-bottom: 14px;
+}
+.group-nomargin {
+  margin-bottom: 0;
+}
+
+.card-skeleton {
+  flex-direction: column;
+  .card-skeleton-list {
+    width: 100%;
+    padding-top: 12px;
+    flex-direction: column;
+    .card-skeleton-list-column {
+      flex-direction: row;
+      justify-content: space-between;
+      .card-skeleton-list-column-text {
+        margin: 0 8px;
+        width: 186px;
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
+}
+</style>

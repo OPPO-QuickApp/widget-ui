@@ -1,0 +1,57 @@
+<import
+  name="widget-container"
+  src="../../components/container/index.ux"
+></import>
+<import name="widget-title" src="../../components/title/index.ux"></import>
+<import name="widget-button" src="../../components/button/index.ux"></import>
+<import name="card-title" src="../components/title/index.ux"></import>
+
+<template>
+  <widget-container is-dark="{{ isDark }}">
+    <div class="space-between-wrapper">
+      <card-title is-dark="{{ isDark }}"></card-title>
+      <div class="card-content-wrapper">
+        <widget-button width="52" @click="click1">小按钮</widget-button>
+        <widget-button width="92" image="{{ image1 }}"
+          >我是大按钮</widget-button
+        >
+      </div>
+    </div>
+  </widget-container>
+</template>
+
+<script>
+import configuration from '@system.configuration'
+
+export default {
+  data() {
+    return {
+      isDark: false,
+      image1: {
+        icon: {
+          type: 'ring-fill',
+          color: '#fff',
+        },
+      },
+    }
+  },
+
+  onShow() {
+    this.isDark = configuration.getThemeMode() === 1
+  },
+}
+</script>
+
+<style lang="less">
+.space-between-wrapper {
+  flex-direction: column;
+  width: 100%;
+}
+
+.card-content-wrapper {
+  height: 122px;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+</style>

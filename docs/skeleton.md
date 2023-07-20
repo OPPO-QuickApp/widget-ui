@@ -1,0 +1,390 @@
+## 骨架屏 skeleton
+
+### 描述
+
+卡片骨架屏组件。
+
+### 使用效果
+
+<div style="text-align: center;margin: 40px;"><img src="./assets/skeleton.jpg" alt="skeleton" style="width:360px" /></div>
+
+### 使用方法
+
+在`.ux`文件中引入组件
+
+```html
+<import
+  name="widget-skeleton"
+  src="../../components/skeleton/index.ux"
+></import>
+<import name="widget-title" src="../../components/title/index.ux"></import>
+<import name="widget-button" src="../../components/button/index.ux"></import>
+```
+
+### 示例
+
+```html
+<template>
+  <div class="page">
+    <div class="item-container">
+      <div class="medium-wrapper container">
+        <div class="skeleton">
+          <div class="skeleton-title">
+            <widget-skeleton
+              is-dark="{{ isDark }}"
+              width="60"
+              height="16"
+              border-radius="2"
+            >
+            </widget-skeleton>
+          </div>
+          <div
+            class="skeleton-content {{ ($idx+1) % group === 0 ? 'group-nomargin' : 'group-margin'}}"
+            for="group"
+          >
+            <div class="skeleton-content-row">
+              <div class="skeleton-content-row-left">
+                <div class="skeleton-content-row-left-image">
+                  <widget-skeleton
+                    is-dark="{{ isDark }}"
+                    width="42"
+                    height="42"
+                    border-radius="9"
+                  ></widget-skeleton>
+                </div>
+              </div>
+              <div class="skeleton-content-row-center">
+                <widget-skeleton
+                  is-dark="{{ isDark }}"
+                  width="130"
+                  height="14"
+                  border-radius="2"
+                  class="skeleton-content-row-center-text"
+                ></widget-skeleton>
+                <widget-skeleton
+                  is-dark="{{ isDark }}"
+                  width="78"
+                  height="12"
+                  border-radius="2"
+                ></widget-skeleton>
+              </div>
+              <div class="skeleton-content-row-right">
+                <widget-skeleton
+                  is-dark="{{ isDark }}"
+                  width="52"
+                  height="28"
+                  border-radius="14"
+                ></widget-skeleton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="small-wrapper container" style="background-color: #295ad9">
+        <div class="skeleton">
+          <div class="skeleton-title">
+            <widget-skeleton
+              is-dark="{{ isDark }}"
+              width="60"
+              height="16"
+              border-radius="2"
+              background-color="rgba(255, 255, 255, 0.1)"
+            ></widget-skeleton>
+          </div>
+          <div class="skeleton-content">
+            <widget-skeleton
+              is-dark="{{ isDark }}"
+              width="124"
+              height="60"
+              border-radius="4"
+              background-color="rgba(255, 255, 255, 0.1)"
+            ></widget-skeleton>
+          </div>
+          <div class="skeleton-fotter">
+            <widget-skeleton
+              is-dark="{{ isDark }}"
+              width="114"
+              height="18"
+              border-radius="4"
+              background-color="rgba(255, 255, 255, 0.1)"
+            ></widget-skeleton>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="item-container">
+      <switch
+        class="switch-open"
+        checked="{{ loading }}"
+        track-color="#ce0a0a"
+        @click="loadData"
+      />
+      <div class="medium-wrapper container">
+        <div if="{{ !loading }}" class="skeleton">
+          <div class="skeleton-title">
+            <widget-skeleton
+              is-dark="{{ isDark }}"
+              width="60"
+              height="16"
+              border-radius="2"
+            >
+            </widget-skeleton>
+          </div>
+          <div
+            class="skeleton-content {{ ($idx+1) % group === 0 ? 'group-nomargin' : 'group-margin'}}"
+            for="group"
+          >
+            <div class="skeleton-content-row">
+              <div class="skeleton-content-row-left">
+                <div class="skeleton-content-row-left-image">
+                  <widget-skeleton
+                    is-dark="{{ isDark }}"
+                    width="42"
+                    height="42"
+                    border-radius="9"
+                  ></widget-skeleton>
+                </div>
+              </div>
+              <div class="skeleton-content-row-center">
+                <widget-skeleton
+                  is-dark="{{ isDark }}"
+                  width="130"
+                  height="14"
+                  border-radius="2"
+                  class="skeleton-content-row-center-text"
+                ></widget-skeleton>
+                <widget-skeleton
+                  is-dark="{{ isDark }}"
+                  width="78"
+                  height="12"
+                  border-radius="2"
+                ></widget-skeleton>
+              </div>
+              <div class="skeleton-content-row-right">
+                <widget-skeleton
+                  is-dark="{{ isDark }}"
+                  width="52"
+                  height="28"
+                  border-radius="14"
+                ></widget-skeleton>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div else class="skeleton">
+          <div class="skeleton-title">
+            <widget-title
+              is-dark="{{ isDark }}"
+              logo="{{ hotAppIcon }}"
+              title="热门应用"
+            ></widget-title>
+          </div>
+          <div
+            class="skeleton-content {{ ($idx+1) % group === 0 ? 'group-nomargin' : 'group-margin'}}"
+            for="group"
+          >
+            <div class="skeleton-content-row">
+              <div class="skeleton-content-row-left">
+                <div class="skeleton-content-row-left-image">
+                  <image
+                    src="http://cdo-test-store.s3v2-qos.storage.wanyol.com/openplat/photo/202301/03/9e9fa034e93161b7f16f4abb2e95e836.png"
+                  ></image>
+                </div>
+              </div>
+              <div class="skeleton-content-row-center">
+                <text class="skeleton-content-row-center-title"
+                  >网易云音乐</text
+                >
+                <text class="skeleton-content-row-center-desc"
+                  >专注于发现与分享的音乐</text
+                >
+              </div>
+              <div class="skeleton-content-row-right">
+                <widget-button width="52" @click="click">安装</widget-button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <switch
+        class="switch-open"
+        checked="{{ smallLoading }}"
+        track-color="#ce0a0a"
+        @click="smallLoadData"
+      />
+      <div class="small-wrapper container" style="background-color: #295ad9">
+        <div if="{{ !smallLoading }}" class="skeleton">
+          <div class="skeleton-title">
+            <widget-skeleton
+              is-dark="{{ isDark }}"
+              width="60"
+              height="16"
+              border-radius="2"
+              background-color="rgba(255, 255, 255, 0.1)"
+            ></widget-skeleton>
+          </div>
+          <div class="skeleton-content">
+            <widget-skeleton
+              is-dark="{{ isDark }}"
+              width="124"
+              height="60"
+              border-radius="4"
+              background-color="rgba(255, 255, 255, 0.1)"
+            ></widget-skeleton>
+          </div>
+          <div class="skeleton-fotter">
+            <widget-skeleton
+              is-dark="{{ isDark }}"
+              width="114"
+              height="18"
+              border-radius="4"
+              background-color="rgba(255, 255, 255, 0.1)"
+            ></widget-skeleton>
+          </div>
+        </div>
+
+        <div else class="skeleton">
+          <div class="skeleton-title">
+            <widget-title
+              is-dark="{{ isDark }}"
+              logo="{{ hotAppIcon }}"
+              title="热门应用"
+            ></widget-title>
+          </div>
+          <div class="skeleton-content" style="width: 124px; height: 60px">
+            <image
+              class="image"
+              src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
+            ></image>
+          </div>
+          <div class="skeleton-footer">
+            <text>专注于发现与分享</text>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+  import hot from '../../common/images/hot.png'
+  export default {
+    data() {
+      return {
+        group: 2,
+        isDark: false,
+        hotAppIcon: hot,
+        loading: false,
+        smallLoading: false,
+      }
+    },
+    loadData() {
+      if (!this.loading) {
+        setTimeout(() => {
+          this.loading = true
+        }, 500)
+      } else {
+        this.loading = false
+      }
+    },
+    smallLoadData() {
+      if (!this.smallLoading) {
+        setTimeout(() => {
+          this.smallLoading = true
+        }, 500)
+      } else {
+        this.smallLoading = false
+      }
+    },
+  }
+</script>
+
+<style lang="less">
+  @import '../../common/style/common.css';
+  .page {
+    flex-direction: column;
+  }
+  .switch-open {
+    margin-bottom: 20px;
+  }
+  .skeleton {
+    flex-direction: column;
+    width: 100%;
+    &-title {
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    &-content {
+      flex-direction: column;
+      margin-bottom: 12px;
+      &-row {
+        flex-direction: row;
+        justify-content: space-between;
+        &-left {
+          width: 42px;
+          height: 42px;
+          margin-right: 8px;
+        }
+
+        &-center {
+          width: 186px;
+          margin-right: 8px;
+          flex-direction: column;
+          justify-content: center;
+          &-text {
+            margin-bottom: 6px;
+          }
+          &-title {
+            font-size: 14px;
+            color: rgba(0, 0, 0, 0.85);
+            line-height: 23px;
+          }
+          &-desc {
+            font-size: 12px;
+            color: rgba(0, 0, 0, 0.55);
+            line-height: 12px;
+          }
+        }
+        &-right {
+          align-items: center;
+        }
+      }
+    }
+
+    &-footer {
+      text {
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.85);
+        line-height: 23px;
+      }
+    }
+    .group-margin {
+      margin-bottom: 14px;
+    }
+    .group-nomargin {
+      margin-bottom: 0;
+    }
+  }
+</style>
+```
+
+## skeleton
+
+### API
+
+#### Attributes
+
+| 属性            | 类型    | 默认值    | 说明           |
+| --------------- | ------- | --------- | -------------- |
+| isDark          | Boolean | false     | 是否是暗色模式 |
+| width           | Number  | 0         | 模板宽         |
+| height          | Number  | 0         | 模板高         |
+| borderRadius    | Number  | 0         | 模板圆角       |
+| backgroundColor | String  | '#F8F8F8' | 背景颜色       |

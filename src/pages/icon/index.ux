@@ -1,0 +1,48 @@
+<import name="widget-icon" src="../../components/icon/index.ux"></import>
+<template>
+  <div class="page">
+    <div class="item-container">
+      <div class="item-container-icon">
+        <block for="icon in iconMap">
+          <div class="icon">
+            <widget-icon type="{{ icon }}" size="18"></widget-icon>
+            <text class="name">{{ ' ' + icon }}</text>
+          </div>
+        </block>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import { icons } from '../../components/icon/icon'
+export default {
+  data() {
+    return {
+      iconMap: Object.keys(icons),
+    }
+  },
+}
+</script>
+<style lang="less">
+@import '../../common/style/common.css';
+
+.item-container-icon {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.icon {
+  flex-direction: column;
+  justify-content: center;
+  width: 114dp;
+  height: 80dp;
+  background-color: #f0f8ff;
+  margin-bottom: 5px;
+  .name {
+    font-size: 12dp;
+    text-align: center;
+    margin-top: 20dp;
+  }
+}
+</style>

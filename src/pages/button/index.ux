@@ -1,0 +1,174 @@
+<import name="widget-button" src="../../components/button/index.ux"></import>
+<import name="widget-title" src="../../components/title/index.ux"></import>
+<import name="widget-icon" src="../../components/icon/index.ux"></import>
+
+<template>
+  <div class="page">
+    <div class="item-container">
+      <div class="small-wrapper container">
+        <widget-title title="小按钮(无icon)">
+          <div class="logo" enablenightmode="false"></div>
+        </widget-title>
+        <div class="button-wrap">
+          <widget-button width="52" @click="click">抢购</widget-button>
+          <widget-button width="72" font-size="14">14号字</widget-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="small-wrapper container">
+        <widget-title title="小按钮(icon组件)">
+          <div class="logo" enablenightmode="false"></div>
+        </widget-title>
+        <div class="button-wrap">
+          <widget-button width="72" image="{{ image1 }}">抢购</widget-button>
+          <widget-button width="92" image="{{ image1 }}"
+            >抢购抢购</widget-button
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="small-wrapper container">
+        <widget-title title="小按钮(icon图片)">
+          <div class="logo" enablenightmode="false"></div>
+        </widget-title>
+        <div class="button-wrap">
+          <widget-button width="72" image="{{ image2 }}">抢购</widget-button>
+          <widget-button width="92" image="{{ image2 }}"
+            >抢购抢购</widget-button
+          >
+        </div>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="medium-wrapper container">
+        <widget-title title="大按钮(无icon)">
+          <div class="logo" enablenightmode="false"></div>
+        </widget-title>
+        <div class="button-wrap">
+          <widget-button width="121" size="large">去这里</widget-button>
+          <widget-button width="121" size="large">导航到车</widget-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="medium-wrapper container">
+        <widget-title title="大按钮(icon组件)">
+          <div class="logo" enablenightmode="false"></div>
+        </widget-title>
+        <div class="button-wrap">
+          <widget-button
+            width="144"
+            image="{{ image3 }}"
+            size="large"
+            color="rgba(0, 0, 0, 0.85)"
+          >
+            去这里
+          </widget-button>
+          <widget-button
+            width="144"
+            image="{{ image3 }}"
+            size="large"
+            color="rgba(0, 0, 0, 0.85)"
+          >
+            导航到车
+          </widget-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="medium-wrapper container">
+        <widget-title title="大按钮(icon图片)">
+          <div class="logo" enablenightmode="false"></div>
+        </widget-title>
+        <div class="button-wrap">
+          <widget-button
+            width="144"
+            image="{{ image4 }}"
+            size="large"
+            color="rgba(0, 0, 0, 0.85)"
+          >
+            去这里
+          </widget-button>
+          <widget-button
+            width="144"
+            image="{{ image4 }}"
+            size="large"
+            color="rgba(0, 0, 0, 0.85)"
+          >
+            导航到车
+          </widget-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import love from '../../common/images/love.png'
+import nav from '../../common/images/nav.png'
+import home from '../../common/images/home.svg'
+
+export default {
+  data() {
+    return {
+      isDark: false,
+      image1: {
+        iconPath: home,
+        icon: {
+          type: 'ring-fill',
+          color: '#fff',
+        },
+      },
+      image2: {
+        iconPath: love,
+      },
+      image3: {
+        icon: {
+          type: 'upload-fill',
+          color: '#000',
+        },
+      },
+      image4: {
+        iconPath: nav,
+      },
+    }
+  },
+  computed: {
+    dark() {
+      return this.isDark ? 'night-mode' : ''
+    },
+  },
+  click() {
+    console.log('handle click!')
+  },
+}
+</script>
+
+<style lang="less">
+@import '../../common/style/common.css';
+
+.page {
+  flex-direction: column;
+}
+
+.button-wrap {
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  background-image: url('../../common/images/hot.png');
+}
+</style>

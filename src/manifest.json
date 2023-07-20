@@ -1,0 +1,217 @@
+{
+  "package": "com.oppo.widget.sample",
+  "name": "oppo卡片组件库",
+  "versionName": "1.0.0",
+  "versionCode": 10000,
+  "minPlatformVersion": 1070,
+  "icon": "/common/logo.png",
+  "features": [
+    {
+      "name": "system.network"
+    },
+    {
+      "name": "system.router"
+    },
+    {
+      "name": "system.device"
+    },
+    {
+      "name": "system.prompt"
+    },
+    {
+      "name": "system.fetch"
+    },
+    {
+      "name": "system.storage"
+    },
+    {
+      "name": "system.configuration"
+    },
+    {
+      "name": "system.package"
+    },
+    {
+      "name": "system.geolocation"
+    }
+  ],
+  "config": {
+    "logLevel": "debug",
+    "designWidth": 360,
+    "container":{
+      "margin":25,
+      "borderRadius":"40",
+      "rule":"4x4"
+    },
+    "developer": {
+      "groupTitle":"测试组件库",
+      "groupIcon":"http://cdo-test-store.s3v2-qos.storage.wanyol.com/openplat/photo/202301/03/9e9fa034e93161b7f16f4abb2e95e836.png",
+      "type":10002,
+      "preview":"http://cdo-test-store.s3v2-qos.storage.wanyol.com/openplat/photo/202301/03/9e9fa034e93161b7f16f4abb2e95e836.png",
+      "size": 2,
+      "instantCardUrl:": "hap://widget/com.oppo.widget.sample/card_demo"
+   }
+  },
+  "router": {
+    "entry": "pages/home",
+    "pages": {
+      "pages/home": {
+        "component": "index"
+      },
+      "pages/button": {
+        "component": "index"
+      },
+      "pages/title": {
+        "component": "index"
+      },
+      "pages/container": {
+        "component": "index"
+      },
+      "pages/error-page": {
+        "component": "index"
+      },
+      "pages/icon": {
+        "component": "index"
+      },
+      "pages/skeleton": {
+        "component": "index"
+      }
+    },
+    "widgets": {
+      "demo/card_demo": {
+        "name": "卡片组件库demo",
+        "description": "卡片组件库demo",
+        "component": "index",
+        "path": "/demo/card_demo",
+        "features": [
+          {
+            "name": "system.network"
+          },
+          {
+            "name": "system.fetch"
+          },
+          {
+            "name": "nearme.router"
+          },
+          {
+            "name": "system.configuration"
+          }
+        ]
+      },
+      "demo/button_demo": {
+        "name": "卡片组件库demo-按钮demo",
+        "description": "卡片组件库-按钮demo",
+        "component": "index",
+        "path": "/demo/button_demo",
+        "features": [
+          {
+            "name": "system.network"
+          },
+          {
+            "name": "system.fetch"
+          },
+          {
+            "name": "nearme.router"
+          },
+          {
+            "name": "system.configuration"
+          }
+        ]
+      },
+      "demo/title_demo": {
+        "name": "卡片组件库demo-标题demo",
+        "description": "卡片组件库-标题demo",
+        "component": "index",
+        "path": "/demo/title_demo",
+        "features": [
+          {
+            "name": "system.network"
+          },
+          {
+            "name": "system.fetch"
+          },
+          {
+            "name": "nearme.router"
+          },
+          {
+            "name": "system.configuration"
+          }
+        ]
+      },
+      "demo/error_demo": {
+        "name": "卡片组件库demo-缺省页demo",
+        "description": "卡片组件库-缺省页demo",
+        "component": "index",
+        "path": "/demo/error_demo",
+        "features": [
+          {
+            "name": "system.network"
+          },
+          {
+            "name": "system.fetch"
+          },
+          {
+            "name": "nearme.router"
+          },
+          {
+            "name": "system.configuration"
+          }
+        ]
+      },
+      "demo/skeleton_demo": {
+        "name": "卡片组件库demo-骨架屏demo",
+        "description": "卡片组件库-骨架屏demo",
+        "component": "index",
+        "path": "/demo/skeleton_demo",
+        "features": [
+          {
+            "name": "system.network"
+          },
+          {
+            "name": "system.fetch"
+          },
+          {
+            "name": "nearme.router"
+          },
+          {
+            "name": "system.configuration"
+          }
+        ]
+      }
+    }
+  },
+  "display": {
+    "forceDark": false,
+    "titleBarBackgroundColor": "#ffffff",
+    "titleBarTextColor": "#000000",
+    "pages": {
+      "pages/home": {
+        "titleBarText": "WidgetUI组件库",
+        "menu": false
+      },
+      "pages/button": {
+        "titleBarText": "button 按钮",
+        "menu": false
+      },
+      "pages/title": {
+        "titleBarText": "title 标题",
+        "menu": false
+      },
+      "pages/container": {
+        "titleBarText": "container 容器",
+        "menu": false
+      },
+      "pages/error-page": {
+        "titleBarText": "error-page 缺省页",
+        "menu": false
+      },
+      "pages/icon": {
+        "titleBarText": "icon 图标组件",
+        "menu": false
+      },
+      "pages/skeleton": {
+        "titleBarText": "skeleton 骨架屏",
+        "menu": false
+      }
+    }
+  }
+}

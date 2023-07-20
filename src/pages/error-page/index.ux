@@ -1,0 +1,145 @@
+<import name="widget-title" src="../../components/title/index.ux"></import>
+<import
+  name="widget-error-page"
+  src="../../components/error-page/index.ux"
+></import>
+
+<template>
+  <div class="page">
+    <div class="item-container">
+      <div class="small-wrapper container">
+        <widget-error-page
+          is-dark="{{ isDark }}"
+          title="无网络连接"
+          description="点击卡片设置网络"
+        >
+          <widget-title is-dark="{{ isDark }}" title="热门应用">
+            <div class="logo" enablenightmode="false"></div>
+          </widget-title>
+        </widget-error-page>
+      </div>
+    </div>
+    <div class="item-container">
+      <div class="small-wrapper container">
+        <widget-error-page
+          is-dark="{{ isDark }}"
+          title="加载失败"
+          description="点击卡片重试"
+        >
+          <widget-title is-dark="{{ isDark }}" title="热门应用">
+            <div class="logo" enablenightmode="false"></div>
+          </widget-title>
+        </widget-error-page>
+      </div>
+    </div>
+    <div class="item-container">
+      <div class="medium-wrapper container">
+        <widget-error-page
+          is-dark="{{ isDark }}"
+          title="加载失败"
+          description="点击卡片重试"
+        >
+          <widget-title is-dark="{{ isDark }}" title="热门应用">
+            <div class="logo" enablenightmode="false"></div>
+          </widget-title>
+        </widget-error-page>
+      </div>
+    </div>
+    <div class="item-container">
+      <div class="large-wrapper container" style="background-color: #295ad9">
+        <widget-error-page
+          is-dark="{{ isDark }}"
+          type="large"
+          title="无网络连接"
+          title-color="rgba(255, 255, 255, 0.85)"
+          description="点击卡片设置网络"
+          description-color="rgba(255, 255, 255, 0.3)"
+        >
+          <widget-title is-dark="{{ isDark }}" title="热门应用">
+            <div class="logo" enablenightmode="false"></div>
+          </widget-title>
+        </widget-error-page>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="small-wrapper container">
+        <widget-error-page
+          is-dark="{{ isDark }}"
+          type="small"
+          has-image="{{ true }}"
+          description="无网络连接"
+        >
+          <widget-title is-dark="{{ isDark }}" title="热门应用">
+            <div class="logo" enablenightmode="false"></div>
+          </widget-title>
+          <div slot="image" class="image" enablenightmode="false"></div>
+        </widget-error-page>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="large-wrapper container">
+        <widget-error-page
+          is-dark="{{ isDark }}"
+          type="large"
+          has-image="{{ true }}"
+          description="无网络连接"
+        >
+          <widget-title is-dark="{{ isDark }}" title="热门应用">
+            <div class="logo" enablenightmode="false"></div>
+          </widget-title>
+          <div slot="image" class="image" enablenightmode="false"></div>
+        </widget-error-page>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="medium-wrapper container">
+        <widget-error-page
+          is-dark="{{ isDark }}"
+          type="medium"
+          has-image="{{ true }}"
+          description="无网络连接"
+        >
+          <widget-title is-dark="{{ isDark }}" title="热门应用">
+            <div class="logo" enablenightmode="false"></div>
+          </widget-title>
+          <div slot="image" class="image" enablenightmode="false"></div>
+        </widget-error-page>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import hot from '../../common/images/hot.png'
+export default {
+  data() {
+    return {
+      hotAppIcon: hot,
+      isDark: false,
+    }
+  },
+}
+</script>
+
+<style lang="less">
+@import '../../common/style/common.css';
+
+.page {
+  flex-direction: column;
+}
+
+.logo {
+  width: 100%;
+  height: 100%;
+  background-image: url('../../common/images/hot.png');
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  background-image: url('../../common/images/no-network.png');
+}
+</style>

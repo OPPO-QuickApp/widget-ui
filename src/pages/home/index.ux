@@ -1,0 +1,65 @@
+<template>
+  <div class="wedgetui-wrap">
+    <div class="type">
+      <text>组件</text>
+    </div>
+    <div class="component">
+      <div class="item"><a href="/pages/button">按钮 button</a></div>
+      <div class="item"><a href="/pages/title">标题 title</a></div>
+      <div class="item"><a href="/pages/container">容器 container</a></div>
+      <div class="item"><a href="/pages/error-page">缺省页 error-page</a></div>
+      <div class="item"><a href="/pages/skeleton">骨架屏 skeleton</a></div>
+      <div class="item"><a href="/pages/icon">图标 icon</a></div>
+    </div>
+  </div>
+</template>
+<style lang="less">
+.wedgetui-wrap {
+  flex-direction: column;
+  background-color: #f7f7f7;
+  .type {
+    padding: 10px;
+    text {
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+
+  .component {
+    background-color: #ffffff;
+    border-style: solid;
+    border-top-width: 1px;
+    border-top-color: #dddee1;
+    border-bottom-width: 1px;
+    flex-direction: column;
+
+    .item {
+      height: 50px;
+      justify-content: space-between;
+      margin-left: 10px;
+      border-bottom-width: 1px;
+      border-bottom-color: #dddee1;
+      border-style: solid;
+
+      a {
+        font-size: 16px;
+        width: 100%;
+      }
+
+      a :active {
+        width: 100%;
+      }
+    }
+  }
+}
+</style>
+<script>
+export default {
+  data() {
+    return {}
+  },
+  onInit() {
+    console.log('home page init!!')
+  },
+}
+</script>

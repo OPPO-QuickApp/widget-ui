@@ -1,0 +1,54 @@
+<template>
+  <div class="widgetui-skeleton" style="{{ baseStyle }}" forcedark="false">
+    <div style="{{ skeletonStyle }}"></div>
+  </div>
+</template>
+
+<script>
+/**
+ * @file 骨架屏组件
+ */
+
+export default {
+  props: {
+    isDark: {
+      type: Boolean,
+      default: false,
+    },
+    width: {
+      type: [Number, String],
+      default: 0,
+    },
+    height: {
+      type: [Number, String],
+      default: '',
+    },
+    backgroundColor: {
+      type: String,
+      default: '',
+    },
+    borderRadius: {
+      type: [Number, String],
+      default: 0,
+    },
+  },
+
+  computed: {
+    baseStyle() {
+      return {
+        width: `${this.width}px`,
+        height: `${this.height}px`,
+        borderRadius: `${this.borderRadius}px`,
+      }
+    },
+    skeletonStyle() {
+      let bgColor = this.isDark ? '#404040' : '#F8F8F8'
+
+      return {
+        ...this.baseStyle,
+        backgroundColor: this.backgroundColor ? this.backgroundColor : bgColor,
+      }
+    },
+  },
+}
+</script>

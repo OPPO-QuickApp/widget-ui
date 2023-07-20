@@ -1,0 +1,44 @@
+<import
+  name="widget-container"
+  src="../../components/container/index.ux"
+></import>
+
+<template>
+  <div class="page">
+    <div class="item-container">
+      <div class="small-wrapper container">
+        <widget-container></widget-container>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="medium-wrapper container">
+        <widget-container></widget-container>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="large-wrapper container">
+        <widget-container></widget-container>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      isDark: false,
+    }
+  },
+}
+</script>
+
+<style lang="less">
+@import '../../common/style/common.css';
+
+.page {
+  flex-direction: column;
+}
+</style>

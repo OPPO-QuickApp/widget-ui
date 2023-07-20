@@ -1,0 +1,69 @@
+<import
+  name="no-network"
+  src="../components/error/no_network/index.ux"
+></import>
+<import
+  name="no-permission"
+  src="../components/error/no_permission/index.ux"
+></import>
+<import name="no-data" src="../components/error/no_data/index.ux"></import>
+<import
+  name="low-version"
+  src="../components/error/low_version/index.ux"
+></import>
+<import
+  name="load-error"
+  src="../components/error/load_error/index.ux"
+></import>
+<import name="widget-title" src="../../components/title/index.ux"></import>
+<import
+  name="widget-container"
+  src="../../components/container/index.ux"
+></import>
+<import name="card-title" src="../components/title/index.ux"></import>
+
+<template>
+  <widget-container is-dark="{{ isDark }}">
+    <block if="{{ errorType ==='noNetwork' }}">
+      <no-network is-dark="{{ isDark }}">
+        <card-title has-right="{{ false }}" is-dark="{{ isDark }}"></card-title>
+      </no-network>
+    </block>
+    <block elif="{{ errorType ==='noPermission' }}">
+      <no-permission is-dark="{{ isDark }}">
+        <card-title has-right="{{ false }}" is-dark="{{ isDark }}"></card-title>
+      </no-permission>
+    </block>
+    <block elif="{{ errorType ==='noData' }}">
+      <no-data is-dark="{{ isDark }}">
+        <card-title has-right="{{ false }}" is-dark="{{ isDark }}"></card-title>
+      </no-data>
+    </block>
+    <block elif="{{ errorType ==='loadError' }}">
+      <load-error is-dark="{{ isDark }}">
+        <card-title has-right="{{ false }}" is-dark="{{ isDark }}"></card-title>
+      </load-error>
+    </block>
+    <block elif="{{ errorType ==='lowVersion' }}">
+      <low-version is-dark="{{ isDark }}">
+        <card-title has-right="{{ false }}" is-dark="{{ isDark }}"></card-title>
+      </low-version>
+    </block>
+  </widget-container>
+</template>
+
+<script>
+import configuration from '@system.configuration'
+
+export default {
+  data() {
+    return {
+      isDark: false,
+      errorType: 'lowVersion', //noNetwork,noPermission,noData,loadError,lowVersion
+    }
+  },
+  onShow() {
+    this.isDark = configuration.getThemeMode() === 1
+  },
+}
+</script>
