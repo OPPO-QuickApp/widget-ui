@@ -63,6 +63,11 @@ npm run dev # 启动文档开发
 npm run start # 开启sample编译及调试
 ```
 
+## 温馨提示
+
+> 组件库默认使用的 designWidth 为 360px,设计稿需严格按照 360px 来设计，否则会布局异常
+
+
 ## 组件示例
 
 ### button 按钮组件
@@ -80,3 +85,8 @@ npm run start # 开启sample编译及调试
 ### skeleton 骨架屏组件
 
 <div style="text-align: center;margin: 40px;"><img src="./docs/assets/skeleton_demo.jpg" alt="button" style="width:360px" /></div>
+
+
+## 反馈交流
+
+你在使用卡片组件库的过程中遇到任何问题，欢迎在`github`上给我们提 issue。
