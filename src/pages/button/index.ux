@@ -9,7 +9,7 @@
         <widget-title title="小按钮(无icon)">
           <div class="logo" enablenightmode="false"></div>
         </widget-title>
-        <div class="button-wrap">
+        <div class="button-wrap small-content-wrap">
           <widget-button width="52" @click="click">抢购</widget-button>
           <widget-button width="72" font-size="14">14号字</widget-button>
         </div>
@@ -21,7 +21,7 @@
         <widget-title title="小按钮(icon组件)">
           <div class="logo" enablenightmode="false"></div>
         </widget-title>
-        <div class="button-wrap">
+        <div class="button-wrap small-content-wrap">
           <widget-button width="72" image="{{ image1 }}">抢购</widget-button>
           <widget-button width="92" image="{{ image1 }}"
             >抢购抢购</widget-button
@@ -35,7 +35,7 @@
         <widget-title title="小按钮(icon图片)">
           <div class="logo" enablenightmode="false"></div>
         </widget-title>
-        <div class="button-wrap">
+        <div class="button-wrap small-content-wrap">
           <widget-button width="72" image="{{ image2 }}">抢购</widget-button>
           <widget-button width="92" image="{{ image2 }}"
             >抢购抢购</widget-button
@@ -49,7 +49,7 @@
         <widget-title title="大按钮(无icon)">
           <div class="logo" enablenightmode="false"></div>
         </widget-title>
-        <div class="button-wrap">
+        <div class="button-wrap small-content-wrap">
           <widget-button width="121" size="large">去这里</widget-button>
           <widget-button width="121" size="large">导航到车</widget-button>
         </div>
@@ -61,7 +61,7 @@
         <widget-title title="大按钮(icon组件)">
           <div class="logo" enablenightmode="false"></div>
         </widget-title>
-        <div class="button-wrap">
+        <div class="button-wrap small-content-wrap">
           <widget-button
             width="144"
             image="{{ image3 }}"
@@ -78,6 +78,18 @@
           >
             导航到车
           </widget-button>
+        </div>
+      </div>
+    </div>
+
+    <div class="item-container">
+      <div class="large-wrapper container">
+        <widget-title title="大按钮">
+          <div class="logo" enablenightmode="false"></div>
+        </widget-title>
+        <div class="button-wrap large-content-wrap">
+          <widget-button width="144" size="large">去这里 </widget-button>
+          <widget-button width="144" size="large">导航到车 </widget-button>
         </div>
       </div>
     </div>
@@ -163,7 +175,16 @@ export default {
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 98px;
+  margin-top: 8px;
+}
+
+.small-content-wrap {
+  height: 98px;
+}
+
+.large-content-wrap {
+  height: 264px;
 }
 
 .logo {

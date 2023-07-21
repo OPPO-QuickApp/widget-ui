@@ -63,30 +63,56 @@ npm run dev # 启动文档开发
 npm run start # 开启sample编译及调试
 ```
 
-## 温馨提示
-
-> 组件库默认使用的 designWidth 为 360px,设计稿需严格按照 360px 来设计，否则会布局异常
-
-
 ## 组件示例
 
-### button 按钮组件
+### [button 按钮组件](https://github.com/OPPO-QuickApp/widget-ui/blob/dev/docs/button.md)
 
-<div style="text-align: center;margin: 40px;"><img src="./docs/assets/button_demo.jpg" alt="button" style="width:360px" /></div>
+#### 2X2
 
-### title 标题组件
+<div style="text-align: center;margin: 40px;"><img src="./docs/assets/button_small.jpg" alt="button" style="width:360px" /></div>
 
-<div style="text-align: center;margin: 40px;"><img src="./docs/assets/title_demo.jpg" alt="button" style="width:360px" /></div>
+#### 4X2
 
-### error 缺省页组件
+<div style="text-align: center;margin: 40px;"><img src="./docs/assets/button_medium.jpg" alt="button" style="width:360px" /></div>
 
-<div style="text-align: center;margin: 40px;"><img src="./docs/assets/error_demo.jpg" alt="button" style="width:360px" /></div>
+#### 4X4
 
-### skeleton 骨架屏组件
+<div style="text-align: center;margin: 40px;"><img src="./docs/assets/button_large.jpg" alt="button" style="width:360px" /></div>
 
-<div style="text-align: center;margin: 40px;"><img src="./docs/assets/skeleton_demo.jpg" alt="button" style="width:360px" /></div>
+### [title 标题组件](https://github.com/OPPO-QuickApp/widget-ui/blob/dev/docs/title.md)
 
+#### 2X2
 
-## 反馈交流
+<div style="text-align: center;margin: 40px;"><img src="./docs/assets/title_small.jpg" alt="title" style="width:360px" /></div>
 
-你在使用卡片组件库的过程中遇到任何问题，欢迎在`github`上给我们提 issue。
+#### 4X2
+
+<div style="text-align: center;margin: 40px;"><img src="./docs/assets/title_medium.jpg" alt="title" style="width:360px" /></div>
+
+#### 4X4
+
+<div style="text-align: center;margin: 40px;"><img src="./docs/assets/title_large.jpg" alt="title" style="width:360px" /></div>
+
+### [error 缺省页组件](https://github.com/OPPO-QuickApp/widget-ui/blob/dev/docs/error-page.md)
+
+#### 2X2
+
+<div style="text-align: center;margin: 40px;"><img src="./docs/assets/error_small.jpg" alt="error" style="width:360px" /></div>
+
+#### 4X2
+
+<div style="text-align: center;margin: 40px;"><img src="./docs/assets/error_medium.jpg" alt="error" style="width:360px" /></div>
+
+#### 4X4
+
+<div style="text-align: center;margin: 40px;"><img src="./docs/assets/error_large.jpg" alt="error" style="width:360px" /></div>
+
+### [skeleton 骨架屏组件](https://github.com/OPPO-QuickApp/widget-ui/blob/dev/docs/skeleton.md)
+
+#### 2X2
+
+<div style="text-align: center;margin: 40px;"><img src="./docs/assets/skeleton_small.jpg" alt="skeleton" style="width:360px" /></div>
+
+#### 4X2
+
+<div style="text-align: center;margin: 40px;"><img src="./docs/assets/skeleton_medium.jpg" alt="skeleton" style="width:360px" /></div>
