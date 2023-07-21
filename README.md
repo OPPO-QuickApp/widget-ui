@@ -4,7 +4,7 @@
 
 ## 使用方法
 
-考虑卡片样式多样性，目前只支持拷贝组件路径到项目中直接使用
+考虑卡片样式多样性，目前只支持拷贝组件路径到项目中直接使用，按需拷贝即可，保持源码精简
 
 组件库目录
 
@@ -17,6 +17,16 @@ src/components/
 ```sh
 npm install less less-loader --save-dev
 ```
+
+## 特别说明
+
+本组件库的核心组件在：button 按钮组件、error-page 缺省页组件、skeleton 组件、title 标题组件。
+
+若有需求，需要适配桌面环境，可使用：container 容器组件。
+
+icon 组件为辅助组件，不需要可在组件中使用图片代替即可。
+
+开发者可根据自身的需要增加内容或者删减预制内容，保持源码的精简。
 
 ## 项目结构
 
@@ -42,16 +52,8 @@ npm install less less-loader --save-dev
     │   └── title_demo # 标题demo
     └── pages # 快应用页面展示示例
         ├── button # 按钮demo
-		...
+	...
 ```
-
-## 特别说明
-
-本组件库的核心组件在：button按钮组件、error-page缺省页组件、skeleton组件、title标题组件。
-
-若有需求，需要适配桌面环境，可使用：container容器组件。
-
-icon组件为辅助组件，不需要可在组件中使用图片代替即可。
 
 ## 开发上手
 
@@ -60,3 +62,21 @@ npm install # 安装依赖
 npm run dev # 启动文档开发
 npm run start # 开启sample编译及调试
 ```
+
+## 组件示例
+
+### button 按钮组件
+
+<div style="text-align: center;margin: 40px;"><img src="./docs/assets/button_demo.jpg" alt="button" style="width:360px" /></div>
+
+### title 标题组件
+
+<div style="text-align: center;margin: 40px;"><img src="./docs/assets/title_demo.jpg" alt="button" style="width:360px" /></div>
+
+### error 缺省页组件
+
+<div style="text-align: center;margin: 40px;"><img src="./docs/assets/error_demo.jpg" alt="button" style="width:360px" /></div>
+
+### skeleton 骨架屏组件
+
+<div style="text-align: center;margin: 40px;"><img src="./docs/assets/skeleton_demo.jpg" alt="button" style="width:360px" /></div>

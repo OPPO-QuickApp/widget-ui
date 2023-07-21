@@ -157,11 +157,9 @@
         </div>
         <div else class="skeleton">
           <div class="skeleton-title">
-            <widget-title
-              is-dark="{{ isDark }}"
-              logo="{{ hotAppIcon }}"
-              title="热门应用"
-            ></widget-title>
+            <widget-title is-dark="{{ isDark }}" title="热门应用">
+              <div class="logo" enablenightmode="false"></div>
+            </widget-title>
           </div>
           <div
             class="skeleton-content {{ ($idx+1) % group === 0 ? 'group-nomargin' : 'group-margin'}}"
@@ -232,11 +230,9 @@
 
         <div else class="skeleton">
           <div class="skeleton-title">
-            <widget-title
-              is-dark="{{ isDark }}"
-              logo="{{ hotAppIcon }}"
-              title="热门应用"
-            ></widget-title>
+            <widget-title is-dark="{{ isDark }}" title="热门应用">
+              <div class="logo" enablenightmode="false"></div>
+            </widget-title>
           </div>
           <div class="skeleton-content" style="width: 124px; height: 60px">
             <image
@@ -260,7 +256,6 @@ export default {
     return {
       group: 2,
       isDark: false,
-      hotAppIcon: hot,
       loading: false,
       smallLoading: false,
     }
@@ -351,6 +346,12 @@ export default {
   }
   .group-nomargin {
     margin-bottom: 0;
+  }
+
+  .logo {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../common/images/hot.png');
   }
 }
 </style>
