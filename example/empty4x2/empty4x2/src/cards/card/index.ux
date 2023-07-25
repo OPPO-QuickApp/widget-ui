@@ -1,0 +1,158 @@
+<import name="widget-container" src="./components/container/index.ux"></import>
+<import
+  name="widget-error-page"
+  src="./components/error-page/index.ux"
+></import>
+<import name="card-content" src="./card_content.ux"></import>
+<import name="card-title" src="./card_title.ux"></import>
+
+<template>
+  <widget-container
+    is-dark="{{ isDark }}"
+    onemit-resize="onResize"
+    @click="onCardClick"
+  >
+    <card-content
+      if="{{ !errorInfo.title }}"
+      data="{{ data }}"
+      is-dark="{{ isDark }}"
+    >
+    </card-content>
+
+    <widget-error-page
+      else
+      title="{{ errorInfo.title }}"
+      description="{{ errorInfo.description }}"
+      is-dark="{{ isDark }}"
+    >
+      <card-title has-right="{{ false }}" is-dark="{{ isDark }}"></card-title>
+    </widget-error-page>
+  </widget-container>
+</template>
+
+<script>
+/**
+ * @file 空白模板 - 主流程模块
+ */
+import configuration from '@system.configuration'
+import {
+  checkVersion,
+  checkPermission,
+  checkNetwork,
+  getRemoteData,
+  routerToWlanManager,
+  routerToPlatformMarket,
+  routerToPlatformSettings,
+} from './common/utils'
+
+export default {
+  data() {
+    return {
+      data: {},
+      isDark: false,
+      hasRightPlatformVersion: true,
+      hasPermission: true,
+      hasNetwork: true,
+      isLoadedSuccess: true,
+    }
+  },
+
+  computed: {
+    // 可根据需要，修改文案，或增删异常状态
+    errorInfo() {
+      if (!this.hasRightPlatformVersion) {
+        return {
+          title: '快应用版本过低',
+          description: '点击卡片下载最新版本',
+        }
+      } else if (!this.hasPermission) {
+        return {
+          title: '无权限',
+          description: '在系统设置中开启权限',
+        }
+      } else if (!this.hasNetwork) {
+        return {
+          title: '无网络连接',
+          description: '点击卡片设置网络',
+        }
+      } else if (!this.isLoadedSuccess) {
+        return {
+          title: '加载失败',
+          description: '点击卡片重新加载',
+        }
+      } else if (!this.data) {
+        return {
+          title: '无内容',
+          description: '点击卡片以获卡片内容',
+        }
+      } else {
+        return {
+          title: '',
+          description: '',
+        }
+      }
+    },
+  },
+
+  // 卡片每次展示时，可刷新全部数据，或根据业务需要调整
+  onShow() {
+    this.updateCard()
+  },
+
+  // 改变桌面布局可触发卡片大小变更，可获取卡片的宽度和高度，来调整卡片内容的布局
+  // event.detail.height
+  onResize(event) {},
+
+  onCardClick() {
+    if (!this.hasRightPlatformVersion) {
+      routerToPlatformMarket()
+    } else if (!this.hasPermission) {
+      routerToPlatformSettings()
+    } else if (!this.hasNetwork) {
+      routerToWlanManager()
+    } else if (!this.isLoadedSuccess || !this.data) {
+      this.getRemoteData()
+    }
+  },
+
+  async updateCard() {
+    this.isDark = configuration.getThemeMode() === 1
+
+    this.hasRightPlatformVersion = await checkVersion()
+
+    if (!this.hasRightPlatformVersion) {
+      return
+    }
+
+    this.hasPermission = await checkPermission()
+
+    if (!this.hasPermission) {
+      return
+    }
+
+    const hasNetwork = await checkNetwork()
+
+    if (hasNetwork) {
+      this.hasNetwork = true
+      this.getRemoteData()
+    } else {
+      this.data = await this.getStorageConf()
+      this.hasNetwork = !!data
+    }
+  },
+
+  async getRemoteData() {
+    try {
+      this.data = await getRemoteData()
+      this.isLoadedSuccess = true
+    } catch (e) {
+      this.isLoadedSuccess = false
+    }
+  },
+
+  // 获取本地缓存数据
+  async getStorageDate() {
+    return data
+  },
+}
+</script>

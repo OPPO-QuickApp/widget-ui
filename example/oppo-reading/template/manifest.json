@@ -1,0 +1,18 @@
+{
+  "img": "card.png",
+  "file": "oppo-reading.zip",
+  "version": "1.0.0",
+  "type": "card",
+  "manufactory": "oppo",
+  "category": "life",
+  "height": 2,
+  "width": 4,
+  "title": {
+    "chinese": "图书阅读",
+    "english": "Reading template"
+  },
+  "information": {
+    "chinese": "小说阅读类模版，适用于小说、图书、阅读等相关卡片",
+    "english": "Novel reading template for novels, books, reading and other related cards"
+  }
+}

@@ -1,0 +1,86 @@
+<import name="card-template" src="../../cards/card/index.ux"></import>
+
+<template>
+  <div class="wrapper">
+    <text class="size-title">宽：308px；高：176px</text>
+    <div class="middle-wrapper-a">
+      <card-template></card-template>
+    </div>
+    <text class="size-title">宽：308px；高：156px</text>
+    <div class="middle-wrapper-b">
+      <card-template></card-template>
+    </div>
+    <text class="size-title">宽：308px；高：176px</text>
+    <div class="middle-wrapper-c">
+      <card-template></card-template>
+    </div>
+    <text class="size-title">宽：308px；高：152px</text>
+    <div class="middle-wrapper-d">
+      <card-template></card-template>
+    </div>
+    <text class="size-title">宽：324px；高：176px</text>
+    <div class="middle-wrapper-e">
+      <card-template></card-template>
+    </div>
+    <text class="size-title">宽：324px；高：152px</text>
+    <div class="middle-wrapper-f">
+      <card-template></card-template>
+    </div>
+  </div>
+</template>
+
+<script>
+/**
+ * @file 体验卡片在不同桌面布局下的情况的展示页
+ */
+export default {}
+</script>
+
+<style lang="less">
+.wrapper {
+  flex-direction: column;
+  align-content: center;
+  background-color: #f0ffff;
+
+  .size-title {
+    font-size: 10px;
+    padding: 10px 40px;
+  }
+
+  .middle-wrapper-a {
+    width: 308px;
+    height: 176px;
+    border-radius: 14px;
+  }
+
+  .middle-wrapper-b {
+    width: 308px;
+    height: 156px;
+    border-radius: 14px;
+  }
+
+  .middle-wrapper-c {
+    width: 308px;
+    height: 176px;
+    border-radius: 14px;
+  }
+
+  .middle-wrapper-d {
+    width: 308px;
+    height: 152px;
+    border-radius: 14px;
+  }
+
+  .middle-wrapper-e {
+    width: 324px;
+    height: 176px;
+    border-radius: 14px;
+  }
+
+  .middle-wrapper-f {
+    width: 324px;
+    height: 152px;
+    border-radius: 14px;
+  }
+}
+</style>

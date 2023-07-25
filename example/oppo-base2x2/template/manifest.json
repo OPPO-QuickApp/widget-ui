@@ -1,0 +1,18 @@
+{
+  "img": "card.png",
+  "file": "oppo-base2x2.zip",
+  "version": "1.1.0",
+  "type": "card",
+  "manufactory": "oppo",
+  "category": "",
+  "height": 2,
+  "width": 2,
+  "title": {
+    "chinese": "图文型",
+    "english": "Graphic template"
+  },
+  "information": {
+    "chinese": "通用模版，适用于图文搭配卡片",
+    "english": "Generic template for graphic matching cards"
+  }
+}

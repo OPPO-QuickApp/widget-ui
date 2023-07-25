@@ -1,0 +1,69 @@
+{
+  "env": {
+    "commonjs": true
+  },
+  "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    }
+  },
+  "globals": {
+    "loadData": false,
+    "saveData": false,
+    "history": false,
+    "console": true,
+    "setTimeout": false,
+    "clearTimeout": false,
+    "setInterval": false,
+    "clearInterval": false
+  },
+  "plugins": [
+    "hybrid"
+  ],
+  "rules": {
+    "indent": [
+      "error",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "no-console": [
+      "error",
+      {
+        "allow": [
+          "log",
+          "info",
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "no-unused-vars": [
+      "warn",
+      {
+        "varsIgnorePattern": "prompt"
+      }
+    ],
+    "quotes": [
+      "error",
+      "single",
+      {
+        "avoidEscape": true,
+        "allowTemplateLiterals": true
+      }
+    ],
+    "linebreak-style": [
+      "warn",
+      "unix"
+    ],
+    "semi": [
+      "error",
+      "never"
+    ]
+  }
+}

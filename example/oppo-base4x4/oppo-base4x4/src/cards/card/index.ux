@@ -1,0 +1,165 @@
+<import name="widget-container" src="./components/container/index.ux"></import>
+<import
+  name="widget-error-page"
+  src="./components/error-page/index.ux"
+></import>
+<import name="card-content" src="./card_content.ux"></import>
+<import name="card-title" src="./card_title.ux"></import>
+
+<import name="no-network" src="./error/no_network/index.ux"></import>
+<import name="no-permission" src="./error/no_permission/index.ux"></import>
+<import name="no-data" src="./error/no_data/index.ux"></import>
+<import name="low-version" src="./error/low_version/index.ux"></import>
+<import name="load-error" src="./error/load_error/index.ux"></import>
+
+<template>
+  <widget-container
+    has-padding="{{ !isLoading }}"
+    is-dark="{{ isDark }}"
+    onemit-resize="onResize"
+    @click="onCardClick"
+  >
+    <low-version
+      if="{{ !this.hasRightPlatformVersion }}"
+      is-dark="{{ isDark }}"
+    >
+      <card-title has-right="{{ false }}" is-dark="{{ isDark }}"></card-title>
+    </low-version>
+
+    <no-permission elif="{{ !this.hasPermission }}" is-dark="{{ isDark }}">
+      <card-title has-right="{{ false }}" is-dark="{{ isDark }}"></card-title>
+    </no-permission>
+
+    <no-network elif="{{ !this.hasNetwork }}" is-dark="{{ isDark }}">
+      <card-title has-right="{{ false }}" is-dark="{{ isDark }}"></card-title>
+    </no-network>
+
+    <load-error elif="{{ !this.isLoadedSuccess }}" is-dark="{{ isDark }}">
+      <card-title has-right="{{ false }}" is-dark="{{ isDark }}"></card-title>
+    </load-error>
+
+    <no-data elif="{{ !this.data }}" is-dark="{{ isDark }}">
+      <card-title has-right="{{ false }}" is-dark="{{ isDark }}"></card-title>
+    </no-data>
+
+    <div
+      elif="{{ isLoading }}"
+      class="{{ isDark ? 'skeleton-dark' : 'skeleton' }}"
+    ></div>
+
+    <card-content else data="{{ data }}" is-dark="{{ isDark }}"> </card-content>
+  </widget-container>
+</template>
+
+<script>
+/**
+ * @file 4x4 基础模板
+ */
+import configuration from '@system.configuration'
+import {
+  checkVersion,
+  checkPermission,
+  checkNetwork,
+  getRemoteData,
+  routerToWlanManager,
+  routerToPlatformMarket,
+  routerToPlatformSettings,
+} from './common/utils'
+import data from './common/mock'
+
+export default {
+  data() {
+    return {
+      data: data,
+      isDark: false,
+      hasRightPlatformVersion: true,
+      hasPermission: true,
+      hasNetwork: true,
+      isLoadedSuccess: true,
+      isLoading: false,
+    }
+  },
+
+  // 卡片每次展示时，可刷新全部数据，或根据业务需要调整
+  onShow() {
+    this.updateCard()
+  },
+
+  // 可获取卡片的宽度和高度做一些操作
+  onResize(event) {},
+
+  onCardClick() {
+    if (!this.hasRightPlatformVersion) {
+      routerToPlatformMarket()
+    } else if (!this.hasPermission) {
+      routerToPlatformSettings()
+    } else if (!this.hasNetwork) {
+      routerToWlanManager()
+    } else if (!this.isLoadedSuccess || !this.data) {
+      this.getRemoteData()
+    }
+  },
+
+  async updateCard() {
+    this.isDark = configuration.getThemeMode() === 1
+
+    // 可根据需要，修改文案，或增删异常状态
+    this.hasRightPlatformVersion = await checkVersion()
+
+    if (!this.hasRightPlatformVersion) {
+      return
+    }
+
+    this.hasPermission = await checkPermission()
+
+    if (!this.hasPermission) {
+      return
+    }
+
+    const hasNetwork = await checkNetwork()
+
+    if (hasNetwork) {
+      this.hasNetwork = true
+      this.getRemoteData()
+    } else {
+      this.data = await this.getStorageConf()
+      this.hasNetwork = !!data
+    }
+  },
+
+  async getRemoteData() {
+    try {
+      this.isLoading = true
+      this.data = await getRemoteData()
+      this.isLoading = false
+      this.isLoadedSuccess = true
+    } catch (e) {
+      this.isLoading = false
+      this.isLoadedSuccess = false
+    }
+  },
+
+  // 获取本地缓存数据
+  async getStorageDate() {
+    return data
+  },
+}
+</script>
+
+<style>
+.skeleton {
+  width: 100%;
+  height: 100%;
+  background-image: url('./images/skeleton.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.skeleton-dark {
+  width: 100%;
+  height: 100%;
+  background-image: url('./images/skeleton_dark.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+</style>

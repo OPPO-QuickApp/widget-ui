@@ -1,0 +1,55 @@
+<template>
+  <div
+    class="widgetui-container"
+    style="{{ containerStyle }}"
+    onresize="resizeChange"
+  >
+    <slot></slot>
+  </div>
+</template>
+
+<script>
+/**
+ * @file 卡片容器组件
+ */
+export default {
+  props: {
+    isDark: {
+      type: Boolean,
+      default: false,
+    },
+    backgroundColor: {
+      type: String,
+      default: '#fff',
+    },
+    hasPadding: {
+      type: Boolean,
+      default: true,
+    },
+  },
+
+  computed: {
+    containerStyle() {
+      return {
+        padding: this.hasPadding ? '16px' : '0',
+        backgroundColor: this.isDark ? '#383838' : this.backgroundColor,
+      }
+    },
+  },
+
+  resizeChange(event) {
+    this.$emit('emitResize', {
+      width: event.offsetWidth,
+      height: event.offsetHeight,
+    })
+  },
+}
+</script>
+
+<style lang="less">
+.widgetui-container {
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+}
+</style>

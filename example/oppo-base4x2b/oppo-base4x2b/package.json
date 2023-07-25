@@ -1,0 +1,27 @@
+{
+    "name": "test",
+    "version": "1.0.0",
+    "subversion": {
+      "toolkit": "0.4.6"
+    },
+    "description": "",
+    "scripts": {
+      "server": "hap server",
+      "dev": "hap server --watch",
+      "postinstall": "hap postinstall",
+      "build": "hap build",
+      "release": "hap release",
+      "watch": "hap watch"
+    },
+    "devDependencies": {
+      "@types/quickapp": "npm:quickapp-interface@^1.0.0",
+      "babel-eslint": "^10.0.2",
+      "eslint": "^6.1.0",
+      "eslint-plugin-hybrid": "0.0.5"
+    },
+    "dependencies": {
+      "less": "^3.10.3",
+      "less-loader": "^5.0.0"
+    }
+  }
+  

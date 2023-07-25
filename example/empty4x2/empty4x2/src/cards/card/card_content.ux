@@ -1,0 +1,38 @@
+<import name="card-title" src="./card_title.ux"></import>
+
+<template>
+  <div
+    class="space-between-wrapper {{ isDark ? 'dark-wrapper' : 'light-wrapper' }}"
+  >
+    <card-title is-dark="{{ isDark }}"></card-title>
+
+    <!-- 其他内容 -->
+  </div>
+</template>
+
+<script>
+/**
+ * @file 空白模板 - 内容模块
+ */
+export default {
+  props: {
+    isDark: {
+      type: Boolean,
+      default: false,
+    },
+    data: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+  },
+}
+</script>
+
+<style lang="less">
+.space-between-wrapper {
+  flex-direction: column;
+  justify-content: space-between;
+}
+</style>

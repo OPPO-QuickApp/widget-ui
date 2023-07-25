@@ -1,0 +1,96 @@
+<import name="card-title" src="./card_title.ux"></import>
+
+<template>
+  <div
+    class="space-between-wrapper {{ isDark ? 'dark-wrapper' : 'light-wrapper' }}"
+  >
+    <card-title is-dark="{{ isDark }}"></card-title>
+
+    <div class="card-nav">
+      <div for="item in data.nav" class="nav-item">
+        <div
+          class="item-icon"
+          style="backgroundImage: url({{ item.icon }})"
+        ></div>
+        <text class="item-name">{{ item.name }}</text>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+/**
+ * @file 4x2b 基础模板 - 内容模块
+ */
+export default {
+  props: {
+    isDark: {
+      type: Boolean,
+      default: false,
+    },
+    data: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+  },
+}
+</script>
+
+<style lang="less">
+.space-between-wrapper {
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-nav {
+  justify-content: space-between;
+
+  .nav-item {
+    flex-direction: column;
+    align-items: center;
+    width: 61px;
+    height: 61px;
+    border-radius: 16px;
+    background-color: rgba(245, 245, 245, 1);
+
+    .item-icon {
+      margin-top: 8px;
+      margin-bottom: 3px;
+      height: 28px;
+      width: 28px;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.85);
+      background-size: contain;
+    }
+
+    .item-name {
+      width: 60px;
+      height: 14px;
+      line-height: 14px;
+      font-size: 10px;
+      color: rgba(0, 0, 0, 0.55);
+      text-align: center;
+      lines: 1;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.dark-wrapper {
+  .card-nav {
+    .nav-item {
+      background-color: rgba(255, 255, 255, 0.1);
+
+      .item-icon {
+        background-color: rgba(255, 255, 255, 0.85);
+      }
+
+      .item-name {
+        color: rgba(255, 255, 255, 0.55);
+      }
+    }
+  }
+}
+</style>

@@ -36,20 +36,7 @@
   ],
   "config": {
     "logLevel": "debug",
-    "designWidth": 360,
-    "container":{
-      "margin":25,
-      "borderRadius":"40",
-      "rule":"4x4"
-    },
-    "developer": {
-      "groupTitle":"测试组件库",
-      "groupIcon":"http://cdo-test-store.s3v2-qos.storage.wanyol.com/openplat/photo/202301/03/9e9fa034e93161b7f16f4abb2e95e836.png",
-      "type":10002,
-      "preview":"http://cdo-test-store.s3v2-qos.storage.wanyol.com/openplat/photo/202301/03/9e9fa034e93161b7f16f4abb2e95e836.png",
-      "size": 2,
-      "instantCardUrl:": "hap://widget/com.oppo.widget.sample/card_demo"
-   }
+    "designWidth": 360
   },
   "router": {
     "entry": "pages/home",

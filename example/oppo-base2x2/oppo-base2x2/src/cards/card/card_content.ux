@@ -1,0 +1,71 @@
+<import name="card-title" src="./card_title.ux"></import>
+
+<template>
+  <div
+    class="space-between-wrapper {{ isDark ? 'dark-wrapper' : 'light-wrapper' }}"
+  >
+    <card-title is-dark="{{ isDark }}"></card-title>
+
+    <div class="card-content">
+      <text class="content-title">{{ data.title }}</text>
+      <text class="content-des">{{ data.des }}</text>
+    </div>
+  </div>
+</template>
+
+<script>
+/**
+ * @file 2x2 基础模板 - 内容模块
+ */
+export default {
+  props: {
+    isDark: {
+      type: Boolean,
+      default: false,
+    },
+    data: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+  },
+}
+</script>
+
+<style lang="less">
+.space-between-wrapper {
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-content {
+  flex-direction: column;
+
+  .content-title {
+    margin-bottom: 2px;
+    height: 21px;
+    line-height: 21px;
+    font-size: 16px;
+    color: #000;
+  }
+
+  .content-des {
+    height: 16px;
+    line-height: 16px;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.55);
+  }
+}
+
+.dark-wrapper {
+  .card-content {
+    .content-name {
+      color: rgba(255, 255, 255, 1);
+    }
+    .content-des {
+      color: rgba(255, 255, 255, 0.55);
+    }
+  }
+}
+</style>

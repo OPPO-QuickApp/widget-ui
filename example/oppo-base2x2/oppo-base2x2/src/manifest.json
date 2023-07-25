@@ -1,0 +1,61 @@
+{
+  "package": "com.oppo.card",
+  "name": "oppo卡片示例",
+  "versionName": "1.0.0",
+  "versionCode": 1,
+  "minPlatformVersion": 1070,
+  "icon": "",
+  "features": [
+    {
+      "name": "system.configuration"
+    },
+    {
+      "name": "system.network"
+    },
+    {
+      "name": "system.geolocation"
+    },
+    {
+      "name": "system.device"
+    }
+  ],
+  "config": {
+    "logLevel": "debug",
+    "designWidth": 360,
+    "container": {
+      "margin": 25,
+      "borderRadius": "16",
+      "rule": "2x2"
+    }
+  },
+  "router": {
+    "entry": "pages/page",
+    "pages": {
+      "pages/page": {
+        "component": "index"
+      }
+    },
+    "widgets": {
+      "cards/card": {
+        "name": "card",
+        "description": "2x2图文型模板",
+        "component": "index",
+        "path": "/cards/card",
+        "features": [
+          {
+            "name": "system.configuration"
+          },
+          {
+            "name": "system.network"
+          },
+          {
+            "name": "system.geolocation"
+          },
+          {
+            "name": "system.device"
+          }
+        ]
+      }
+    }
+  }
+}

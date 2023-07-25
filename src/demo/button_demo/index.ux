@@ -2,7 +2,6 @@
   name="widget-container"
   src="../../components/container/index.ux"
 ></import>
-<import name="widget-title" src="../../components/title/index.ux"></import>
 <import name="widget-button" src="../../components/button/index.ux"></import>
 <import name="card-title" src="../components/title/index.ux"></import>
 
@@ -49,7 +48,7 @@ export default {
 }
 
 .card-content-wrapper {
-  height: 122px;
+  height: 106px;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;

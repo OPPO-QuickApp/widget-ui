@@ -1,0 +1,151 @@
+<template>
+  <div class="widgetui-error">
+    <div class="widgetui-error-header">
+      <slot></slot>
+    </div>
+    <div
+      if="{{ !title }}"
+      class="widgetui-error-image"
+      style="{{ imageStyle }}"
+    >
+      <slot name="image"></slot>
+    </div>
+    <text
+      else
+      class="widgetui-error-title"
+      style="{{ titleStyle }}"
+      forcedark="{{ titleColor ? false : true }}"
+    >
+      {{ title }}
+    </text>
+    <text
+      class="widgetui-error-description"
+      style="{{ descriptionTextStyle }}"
+      forcedark="{{ descriptionColor ? false : true }}"
+    >
+      {{ description }}
+    </text>
+  </div>
+</template>
+
+<script>
+/**
+ * @file 缺省页组件
+ */
+const widgetType = {
+  small: 'small',
+  medium: 'medium',
+  large: 'large',
+}
+
+export default {
+  props: {
+    isDark: {
+      type: Boolean,
+      default: true,
+    },
+    type: {
+      type: String,
+      default: widgetType.large,
+    },
+    title: {
+      type: String,
+      default: '',
+    },
+    titleColor: {
+      type: String,
+      default: '',
+    },
+    description: {
+      type: String,
+      default: '',
+    },
+    descriptionColor: {
+      type: String,
+      default: '',
+    },
+  },
+
+  computed: {
+    titleStyle() {
+      if (this.titleColor) {
+        return {
+          color: this.titleColor,
+        }
+      }
+
+      return {
+        color: this.isDark
+          ? 'rgba(255, 255, 255, 0.85)'
+          : 'rgba(0, 0, 0, 0.85)',
+      }
+    },
+
+    descriptionTextStyle() {
+      if (this.descriptionColor) {
+        return {
+          color: this.descriptionColor,
+        }
+      }
+
+      return {
+        color: this.isDark ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)',
+      }
+    },
+
+    imageStyle() {
+      let width = 120,
+        height = 90
+
+      if (this.type === widgetType.large) {
+        width = 168
+        height = 120
+      }
+
+      return {
+        marginTop: this.type === widgetType.large ? '0' : '20px',
+        width: `${width}px`,
+        height: `${height}px`,
+      }
+    },
+  },
+}
+</script>
+
+<style lang="less">
+.widgetui-error {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  .widgetui-error-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  .widgetui-error-image {
+    width: 100%;
+    background-size: contain;
+  }
+
+  .widgetui-error-title {
+    margin-bottom: 4px;
+    width: 100%;
+    line-height: 20px;
+    font-weight: 550;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .widgetui-error-description {
+    width: 100%;
+    height: 16px;
+    line-height: 16px;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+</style>

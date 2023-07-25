@@ -1,0 +1,153 @@
+<import name="widget-icon" src="../icon/index.ux"></import>
+<template>
+  <div class="widgetui-title">
+    <div class="widgetui-title-left" forcedark="{{ color ? false : true }}">
+      <div class="widgetui-title-logo">
+        <slot name="default"></slot>
+      </div>
+      <text style="{{ titleStyle }}">{{ title }}</text>
+    </div>
+    <div
+      if="{{ rightText }}"
+      class="widgetui-title-right"
+      forcedark="{{ rightTextColor ? false : true }}"
+      onclick="clickHandler"
+    >
+      <text style="{{ rightTextStyle }}">{{ rightText }}</text>
+
+      <div
+        if="{{ hasRightImage || rightIcon }}"
+        class="widgetui-title-right-icon"
+      >
+        <widget-icon
+          if="{{ rightIcon }}"
+          type="{{ rightIcon }}"
+          size="{{ rightIconSize }}"
+          color="{{ rightIconColor || rightTextStyle.color}}"
+        >
+        </widget-icon>
+        <slot name="right-image"></slot>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+/**
+ * @file 标题组件
+ */
+export default {
+  props: {
+    isDark: {
+      type: Boolean,
+      default: false,
+    },
+    logo: {
+      type: String,
+      default: '',
+    },
+    title: {
+      type: String,
+      default: '',
+    },
+    color: {
+      type: String,
+      default: '',
+    },
+    rightText: {
+      type: String,
+      default: '',
+    },
+    rightTextColor: {
+      type: String,
+      default: '',
+    },
+    rightIcon: {
+      type: String,
+      default: '',
+    },
+    rightIconSize: {
+      type: Number,
+      default: 14,
+    },
+    rightIconColor: {
+      type: String,
+      default: '',
+    },
+    hasRightImage: {
+      type: Boolean,
+      default: false,
+    },
+  },
+
+  computed: {
+    titleStyle() {
+      if (this.color) {
+        return {
+          color: this.color,
+        }
+      }
+
+      return {
+        color: this.isDark
+          ? 'rgba(255, 255, 255, 0.55)'
+          : 'rgba(0, 0, 0, 0.55)',
+      }
+    },
+
+    rightTextStyle() {
+      if (this.rightTextColor) {
+        return {
+          color: this.rightTextColor,
+        }
+      }
+
+      return {
+        color: this.isDark ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.3)',
+      }
+    },
+  },
+
+  clickHandler(e) {
+    e.stopPropagation()
+    this.$emit('rightClick', e)
+  },
+}
+</script>
+
+<style lang="less">
+.widgetui-title {
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  height: 18px;
+
+  .widgetui-title-left {
+    .widgetui-title-logo {
+      margin-right: 8px;
+      width: 18px;
+      height: 18px;
+    }
+    text {
+      font-size: 12px;
+      font-weight: 550;
+      color: rgba(0, 0, 0, 0.55);
+    }
+  }
+
+  .widgetui-title-right {
+    text {
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .widgetui-title-right-icon {
+      width: 18px;
+      height: 18px;
+      justify-content: center;
+      align-items: center;
+      margin-left: 4px;
+    }
+  }
+}
+</style>

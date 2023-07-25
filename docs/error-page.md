@@ -154,6 +154,8 @@
     width: 100%;
     height: 100%;
     background-image: url('../../common/images/hot.png');
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 
   .image {

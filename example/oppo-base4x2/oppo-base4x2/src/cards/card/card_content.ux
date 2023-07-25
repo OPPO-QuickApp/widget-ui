@@ -1,0 +1,141 @@
+<import name="card-title" src="./card_title.ux"></import>
+
+<template>
+  <div
+    class="space-between-wrapper {{ isDark ? 'dark-wrapper' : 'light-wrapper' }}"
+  >
+    <div class="card-left-wrapper" style="{{ leftStyle }}">
+      <card-title is-dark="{{ isDark }}"></card-title>
+    </div>
+
+    <div class="card-right-wrapper">
+      <div class="card-nav">
+        <div class="card-row">
+          <div class="nav-item">
+            <image class="item-icon" src="{{ data.nav[0].icon }}"></image>
+            <text class="item-name">{{ data.nav[0].name }}</text>
+          </div>
+          <div class="nav-item">
+            <image class="item-icon" src="{{ data.nav[1].icon }}"></image>
+            <text class="item-name">{{ data.nav[1].name }}</text>
+          </div>
+        </div>
+        <div class="card-row">
+          <div class="nav-item">
+            <image class="item-icon" src="{{ data.nav[2].icon }}"></image>
+            <text class="item-name">{{ data.nav[2].name }}</text>
+          </div>
+          <div class="nav-item">
+            <image class="item-icon" src="{{ data.nav[3].icon }}"></image>
+            <text class="item-name">{{ data.nav[3].name }}</text>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+/**
+ * @file 4x2 基础模板 - 内容模块
+ */
+export default {
+  props: {
+    isDark: {
+      type: Boolean,
+      default: false,
+    },
+    data: {
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+  },
+
+  computed: {
+    leftStyle() {
+      return {
+        backgroundImage: `url(${this.data.background})`,
+      }
+    },
+  },
+}
+</script>
+
+<style lang="less">
+.card-left-wrapper {
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding: 16px;
+  width: 160px;
+  background-color: rgba(245, 245, 245, 1);
+  background-size: contain;
+}
+
+.card-right-wrapper {
+  flex-grow: 1;
+  flex-shrink: 1;
+
+  .card-nav {
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px 16px 16px 0;
+    height: 100%;
+    width: 100%;
+
+    .card-row {
+      justify-content: space-between;
+
+      .nav-item {
+        flex-direction: column;
+        align-items: center;
+        padding-left: 8px;
+        width: 50%;
+        height: 58px;
+
+        .item-icon {
+          height: 40px;
+          width: 40px;
+          border-radius: 50%;
+          margin-bottom: 4px;
+          background-color: rgba(245, 245, 245, 1);
+        }
+
+        .item-name {
+          width: 100%;
+          height: 14px;
+          line-height: 14px;
+          font-size: 10px;
+          color: rgba(0, 0, 0, 0.55);
+          text-align: center;
+          lines: 1;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+  }
+}
+
+.dark-wrapper {
+  .card-left-wrapper {
+    background-color: rgba(64, 64, 64, 1);
+  }
+
+  .card-right-wrapper {
+    .card-nav {
+      .card-row {
+        .nav-item {
+          .item-icon {
+            background-color: rgba(255, 255, 255, 0.3);
+          }
+
+          .item-name {
+            color: rgba(255, 255, 255, 0.55);
+          }
+        }
+      }
+    }
+  }
+}
+</style>

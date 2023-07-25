@@ -1,0 +1,47 @@
+<import
+  name="widget-error-page"
+  src="../../components/error-page/index.ux"
+></import>
+
+<template>
+  <widget-error-page
+    description="无内容，点击卡片以获卡片内容"
+    is-dark="{{ isDark }}"
+  >
+    <slot></slot>
+    <div
+      slot="image"
+      class="{{ isDark ? 'error-image-dark' : 'error-image '}}"
+      enablenightmode="false"
+    ></div>
+  </widget-error-page>
+</template>
+
+<script>
+export default {
+  props: {
+    isDark: {
+      type: Boolean,
+      default: false,
+    },
+  },
+}
+</script>
+
+<style lang="less">
+.error-image {
+  width: 100%;
+  height: 100%;
+  background-image: url('./images/no-data.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.error-image-dark {
+  width: 100%;
+  height: 100%;
+  background-image: url('./images/no-data-dark.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+</style>

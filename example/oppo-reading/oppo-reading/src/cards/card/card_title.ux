@@ -1,0 +1,47 @@
+<import name="widget-title" src="./components/title/index.ux"></import>
+
+<template>
+  <widget-title
+    title="阅读"
+    right-text="{{ hasRight ? '换一换' : ''}}"
+    right-icon="refresh-fill"
+    is-dark="{{ isDark }}"
+    @right-click="onRightClick"
+  >
+    <div class="logo" enablenightmode="false"></div>
+  </widget-title>
+</template>
+
+<script>
+/**
+ * @file 图书阅读 - 标题模块
+ */
+import { getData } from './common/utils'
+
+export default {
+  props: {
+    isDark: {
+      type: Boolean,
+      default: false,
+    },
+    hasRight: {
+      type: Boolean,
+      default: true,
+    },
+  },
+
+  onRightClick() {
+    this.$emit('emitRightClick')
+  },
+}
+</script>
+
+<style lang="less">
+.logo {
+  width: 100%;
+  height: 100%;
+  background-image: url('./images/logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+</style>

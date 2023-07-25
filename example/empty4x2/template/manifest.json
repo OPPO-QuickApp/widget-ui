@@ -1,0 +1,18 @@
+{
+  "img": "card.png",
+  "file": "empty4x2.zip",
+  "version": "1.1.0",
+  "type": "card",
+  "manufactory": "oppo",
+  "category": "",
+  "height": 2,
+  "width": 4,
+  "title": {
+    "chinese": "空白模板",
+    "english": "Blank template"
+  },
+  "information": {
+    "chinese": "空白模版",
+    "english": "Blank Template"
+  }
+}
